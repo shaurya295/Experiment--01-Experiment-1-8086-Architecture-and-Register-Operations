@@ -139,8 +139,8 @@ END MAIN
 ```
 
 ### Screenshot
-<img width="1917" height="970" alt="image" src="https://github.com/user-attachments/assets/05eedaa1-ca7d-4593-a9cc-c563da181f5b" />
 
+<img width="1917" height="972" alt="image" src="https://github.com/user-attachments/assets/7ed70d21-7618-4252-995c-7af9716d8e9e" />
 
 ### Expected Result
 
@@ -231,9 +231,10 @@ This 8086 assembly program swaps the contents of two 16-bit memory locations usi
 6.  Inspect the registers and memory variables.
 7.  Record the observed results and compare them with the expected
     results.
+    
 ## Screenshot of the results 
 
-<img width="1917" height="968" alt="image" src="https://github.com/user-attachments/assets/280e172b-3cf2-408c-9dfe-4c1076459353" />
+<img width="1917" height="967" alt="image" src="https://github.com/user-attachments/assets/13b2c682-494e-4c6f-9ded-5362d4bc21cb" />
 
 ## Result
 
