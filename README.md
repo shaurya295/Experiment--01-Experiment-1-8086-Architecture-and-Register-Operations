@@ -86,6 +86,10 @@ Memory / I/O <-->+-----------------------------------+<--> System Bus
                  +-----------------------------------+
 ```
 
+### Hand Drawn Diagram
+
+<img width="940" height="502" alt="image" src="https://github.com/user-attachments/assets/14da38c0-fa59-4c40-bbac-f898ab318fa2" />
+
 ### Working Principle
 
 The BIU fetches instruction bytes and stores them in its 6-byte queue
@@ -134,6 +138,10 @@ MAIN ENDP
 END MAIN
 ```
 
+### Screenshot
+<img width="1917" height="970" alt="image" src="https://github.com/user-attachments/assets/05eedaa1-ca7d-4593-a9cc-c563da181f5b" />
+
+
 ### Expected Result
 
 -   AX = `1234H`
@@ -165,7 +173,29 @@ Write an 8086 assembly language program to exchange the contents of two
 5.  Stop the program.
 
 ### Assembly Program
+```asm
+.MODEL SMALL
+.STACK 100H
 
+.DATA
+    VALUE1 DW 1111H
+    VALUE2 DW 2222H
+
+.CODE
+MAIN:
+    MOV AX, @DATA
+    MOV DS, AX
+
+    ; Exchange memory locations using registers AX and BX
+    MOV AX, VALUE1      ; Load VALUE1 into AX
+    MOV BX, VALUE2      ; Load VALUE2 into BX
+    MOV VALUE1, BX      ; Store BX into VALUE1
+    MOV VALUE2, AX      ; Store AX into VALUE2
+
+    MOV AH, 4CH
+    INT 21H
+END MAIN
+```
  
 
 ### Expected Result
@@ -176,6 +206,17 @@ Write an 8086 assembly language program to exchange the contents of two
   VALUE2                       `2222H`           `1111H`
 
 ### Explanation
+
+This 8086 assembly program swaps the contents of two 16-bit memory locations using general-purpose registers, bypassing the architecture's restriction on direct memory-to-memory transfers.
+
+1. **Segment Initialization**: `MOV AX, @DATA` and `MOV DS, AX` load the base address of the data segment into the Data Segment (`DS`) register, enabling access to the defined variables.
+2. **Data Loading**: 
+   - `MOV AX, VALUE1` reads the first memory value (`1111H`) into the `AX` register.
+   - `MOV BX, VALUE2` reads the second memory value (`2222H`) into the `BX` register.
+3. **Value Exchange**:
+   - `MOV VALUE1, BX` writes the data stored in `BX` into the first memory location.
+   - `MOV VALUE2, AX` writes the data stored in `AX` into the second memory location.
+4. **Termination**: `MOV AH, 4CH` followed by `INT 21H` triggers the DOS interrupt to safely terminate the execution and return control to the operating system.
 
   
 ------------------------------------------------------------------------
@@ -192,7 +233,7 @@ Write an 8086 assembly language program to exchange the contents of two
     results.
 ## Screenshot of the results 
 
-
+<img width="1917" height="968" alt="image" src="https://github.com/user-attachments/assets/280e172b-3cf2-408c-9dfe-4c1076459353" />
 
 ## Result
 
